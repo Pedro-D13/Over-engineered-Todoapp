@@ -1,0 +1,17 @@
+<form
+  class="create_task_form"
+  (ngSubmit)="createNewList()"
+  [formGroup]="newListForm"
+>
+  <mat-form-field (color)="(!newListForm.invalid ? 'accent' : 'warn')">
+    <mat-label> create new list </mat-label>
+    <input matInput formControlName="title" placeholder="title" />
+  </mat-form-field>
+
+  <button mat-button [disabled]="newListForm.invalid" type="submit">
+    Submit
+  </button>
+  <mat-error *ngIf="newListForm.invalid">
+    title should be less than 70 charcaters
+  </mat-error>
+</form>

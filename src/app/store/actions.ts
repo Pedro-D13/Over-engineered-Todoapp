@@ -4,7 +4,7 @@ import { TasksList, Tasks } from "../crud/models/crud-interfaces";
 // create new lists
 export const createTaskList = createAction(
   "[crud] create a new list for tasks",
-  props<TasksList>()
+  props<{ listTitle: string }>()
 );
 
 // create tasks
