@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from "@ngrx/store";
+import { Tasks, TasksList } from "../crud/models/crud-interfaces";
 import * as crudActions from "./actions";
-import { TasksList, Tasks } from "../crud/models/crud-interfaces";
 
 export interface TodoAppState {
   lists: TasksList[];
@@ -30,6 +30,9 @@ const toDoAppReducer = createReducer(
   on(crudActions.createTaskList, (state, { listTitle }) => ({
     // ...state,
     lists: [...state.lists, { listTitle: listTitle, tasks: [] }],
+  })),
+  on(crudActions.deleteTaskList, (state, { listTitle }) => ({
+    lists: [...state.lists.filter((each) => each.listTitle != listTitle)],
   }))
 );
 

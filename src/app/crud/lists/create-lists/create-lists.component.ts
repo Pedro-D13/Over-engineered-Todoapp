@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
+import * as actions from "tdl-store/actions";
 import { TasksList } from "../../models/crud-interfaces";
-import * as actions from "../../../store/actions";
 
 @Component({
   selector: "app-create-lists",
@@ -16,9 +16,10 @@ export class CreateListsComponent implements OnInit {
   ) {}
   newListForm: FormGroup;
 
+  title = "";
   ngOnInit(): void {
     this.newListForm = this.fb.group({
-      title: ["", [Validators.minLength(2), Validators.maxLength(50)]],
+      title: ["", [Validators.maxLength(50)]],
     });
   }
 

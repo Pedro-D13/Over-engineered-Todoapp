@@ -1,11 +1,15 @@
-.main-div {
+:host {
   display: grid;
   //   justify-content: center;
-  grid-template-columns: minmax(150px, 25%) 1fr;
+  grid-template-columns: 0px minmax(250px, 15%) 1fr 1fr;
+  // grid-template-rows: 1fr auto;
 }
 
 .todolists {
+  background-color: lightgrey;
+  padding: 0px;
 }
 
 .newlistcreation {
+  padding: 0px;
 }

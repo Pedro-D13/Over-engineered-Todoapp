@@ -1,19 +1,25 @@
-import { NgModule } from "@angular/core";
+import { CdkTreeModule } from "@angular/cdk/tree";
 import { CommonModule } from "@angular/common";
-
+import { NgModule } from "@angular/core";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { MatListModule } from "@angular/material/list";
+import { MatSelectModule } from "@angular/material/select";
+import { RouterModule } from "@angular/router";
+import { ListTdlComponent } from "src/app/crud/lists/list-tdl/list-tdl.component";
+import { CreateListsComponent } from "./lists/create-lists/create-lists.component";
+import { DeleteTdlComponent } from "./lists/delete-tdl/delete-tdl.component";
+import { DetailTdlComponent } from "./lists/detail-tdl/detail-tdl.component";
 import { CreatetaskComponent } from "./tasks/createtask/createtask.component";
 import { DeletetaskComponent } from "./tasks/deletetask/deletetask.component";
-import { UpdatetaskComponent } from "./tasks/updatetask/updatetask.component";
 import { DetailtaskComponent } from "./tasks/detailtask/detailtask.component";
-import { ListtasksComponent } from "./lists/list-tasks/listtasks.component";
-import { CreateListsComponent } from "./lists/create-lists/create-lists.component";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-
-import { MatInputModule } from "@angular/material/input";
-import { MatSelectModule } from "@angular/material/select";
-import { MatButtonModule } from "@angular/material/button";
-import { MatChipsModule } from "@angular/material/chips";
-import { MatFormFieldModule } from "@angular/material/form-field";
+import { UpdatetaskComponent } from "./tasks/updatetask/updatetask.component";
 
 const components = [
   CreateListsComponent,
@@ -21,22 +27,29 @@ const components = [
   DeletetaskComponent,
   UpdatetaskComponent,
   DetailtaskComponent,
-  ListtasksComponent,
+  ListTdlComponent,
+  DeleteTdlComponent,
 ];
 
 const modules = [
   CommonModule,
   FormsModule,
+  MatListModule,
   ReactiveFormsModule,
   MatFormFieldModule,
   MatInputModule,
+  CdkTreeModule,
   MatSelectModule,
   MatButtonModule,
   MatChipsModule,
+  MatExpansionModule,
+  MatIconModule,
+  MatCheckboxModule,
+  RouterModule,
 ];
 
 @NgModule({
-  declarations: [...components],
+  declarations: [...components, DetailTdlComponent],
   exports: [...components],
   imports: [...modules],
 })
