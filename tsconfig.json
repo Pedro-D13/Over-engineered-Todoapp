@@ -2,9 +2,6 @@
   "compileOnSave": true,
   "compilerOptions": {
     "baseUrl": "./",
-    "paths": {
-      "tdl-store/*": ["src/app/store/*"]
-    },
     "outDir": "./dist/out-tsc",
     "sourceMap": true,
     "declaration": false,

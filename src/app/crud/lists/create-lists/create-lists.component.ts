@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Store } from "@ngrx/store";
-import * as actions from "tdl-store/actions";
+import * as actions from "../../../store/actions";
 import { TasksList } from "../../models/crud-interfaces";
 
 @Component({

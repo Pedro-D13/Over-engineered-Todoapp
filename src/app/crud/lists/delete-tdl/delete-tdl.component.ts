@@ -1,8 +1,8 @@
 import { Component, Input } from "@angular/core";
 import { Store } from "@ngrx/store";
 import { TasksList } from "src/app/crud/models/crud-interfaces";
-import * as actions from "tdl-store/actions";
-import { TodoAppState } from "tdl-store/reducers";
+import * as actions from "../../../store/actions";
+import { TodoAppState } from "../../../store/reducers";
 
 @Component({
   selector: "app-delete-tdl",
