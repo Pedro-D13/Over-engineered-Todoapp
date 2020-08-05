@@ -1,4 +1,8 @@
-FROM node:13.11.0-alpine as node
+FROM nginx:alpine
+LABEL author="Pedro Dias"
+COPY ./config/nginx.conf /etc/nginx/conf.d/default.conf
+
+# FROM node:13.11.0-alpine as node
 # LABEL authors="Pedro Dias"
 # WORKDIR /usr/src/app
 # COPY package*.json ./
