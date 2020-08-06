@@ -4,6 +4,7 @@ import * as crudActions from "./actions";
 
 export interface TodoAppState {
   lists: TasksList[];
+  detail: Tasks;
 }
 
 // dummy data to work with
@@ -23,6 +24,7 @@ export const initialState: TodoAppState = {
       tasks: [{ title: "water", content: "buy water" }],
     },
   ],
+  detail: null,
 };
 
 const toDoAppReducer = createReducer(
@@ -33,6 +35,15 @@ const toDoAppReducer = createReducer(
   })),
   on(crudActions.deleteTaskList, (state, { listTitle }) => ({
     lists: [...state.lists.filter((each) => each.listTitle != listTitle)],
+  })),
+  on(crudActions.updateTaskList, (state, { oldListTitle, newListTitle }) => ({
+    lists: state.lists.splice(
+      state.lists.findIndex((each) => {
+        each.listTitle == oldListTitle;
+        return { listTitle: newListTitle, tasks: each.tasks };
+      }),
+      1
+    ),
   }))
 );
 

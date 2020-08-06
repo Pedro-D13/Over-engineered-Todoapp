@@ -2,12 +2,33 @@
   height: 100vh;
   padding: 0px;
   margin: 0px;
+  background-color: rgb(213, 213, 213);
 }
 
-.list-div {
-  background-color: rgb(213, 213, 213);
+.create_tdl {
+  margin: 1rem 0px;
+  background-color: white;
 }
 
 .todo_lists {
   font-size: 14px;
+}
+
+.item-div {
+  display: flex;
+}
+
+.child {
+  width: 100%;
+  flex-grow: 5;
+}
+
+.input-width {
+  width: fit-content;
+}
+
+.m-icon {
+  flex: 1;
+  padding: 0px;
+  margin: 0px;
 }

@@ -12,6 +12,11 @@ export const deleteTaskList = createAction(
   props<{ listTitle: string }>()
 );
 
+export const updateTaskList = createAction(
+  "[crud] update a list title",
+  props<{ oldListTitle: string; newListTitle: string }>()
+);
+
 // create tasks
 export const addTask = createAction(
   "[crud] create a new task ",

@@ -1,11 +1,18 @@
-<app-create-lists></app-create-lists>
+<div mat-subheader>Tasks</div>
+<div class="create_tdl">
+  <app-create-lists></app-create-lists>
+</div>
+
 <mat-list class="list-div">
-  <div mat-subheader>Tasks</div>
   <ng-container *ngIf="todolists$ | async as tdl">
     <ng-container *ngIf="tdl.length > 0; else block">
       <mat-list-item class="item-div" *ngFor="let list of tdl">
         <mat-checkbox #click hidden></mat-checkbox>
-        <button mat-icon-button (click)="click.checked = !click.checked">
+        <ng-container
+          class="m-icon"
+          mat-list-icon
+          (click)="click.checked = !click.checked"
+        >
           <mat-icon
             color="primary"
             mat-list-icon
@@ -17,17 +24,36 @@
           >
             {{ arrow }}
           </mat-icon>
-        </button>
-
-        <a
-          mat-flat-button
+        </ng-container>
+        <div class="child" #editTitle [hidden]="true">
+          <mat-form-field appearance="standard">
+            <input matInput [placeholder]="list.listTitle" />
+          </mat-form-field>
+        </div>
+        <small
+          class="child"
           [routerLink]="['./list', 'list']"
           routerLinkActive="router-link-active"
           color="primary"
+          #taskListButton
+          [hidden]="false"
         >
-          <div matLine>{{ list.listTitle }}</div>
-        </a>
-        <app-delete-tdl [todoListToDelete]="list"></app-delete-tdl>
+          {{ list.listTitle }}
+        </small>
+
+        <mat-icon
+          class="m-icon"
+          (click)="
+            editTitle.hidden = !editTitle.hidden;
+            taskListButton.hidden = !taskListButton.hidden
+          "
+        >
+          <mat-icon>edit</mat-icon>
+        </mat-icon>
+        <app-delete-tdl
+          class="m-icon"
+          [todoListToDelete]="list"
+        ></app-delete-tdl>
       </mat-list-item>
     </ng-container>
     <ng-template #block>

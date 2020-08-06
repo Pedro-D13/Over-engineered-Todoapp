@@ -1,2 +1,10 @@
-dist
 node_modules
+.git
+.editorconfig
+/node_modules
+/e2e
+/dist
+.gitignore
+*.md
+*.zip
+

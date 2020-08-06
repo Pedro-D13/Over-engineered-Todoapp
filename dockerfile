@@ -1,6 +1,19 @@
-FROM nginx:alpine
+#stage 1
+FROM node:10-alpine as build-step
+RUN mkdir -p /app
+WORKDIR /app
+COPY package.json /app
+RUN npm install
+COPY . /app
+RUN npm run build --prod
+
+
+
+#stage 2
+FROM nginx:1.17.1-alpine
 LABEL author="Pedro Dias"
-COPY ./config/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build-step /app/dist/todoapp  /usr/share/nginx/html
+
 
 # FROM node:13.11.0-alpine as node
 # LABEL authors="Pedro Dias"
