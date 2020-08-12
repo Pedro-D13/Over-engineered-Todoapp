@@ -7,12 +7,7 @@ const routes: Routes = [
   {
     path: "",
     component: ListTdlComponent,
-    children: [
-      {
-        path: ":title",
-        component: DetailTdlComponent,
-      },
-    ],
+    children: [{ path: ":listTitle", component: DetailTdlComponent }],
   },
 ];
 
@@ -21,3 +16,4 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
+export const routingComponents = [ListTdlComponent, DetailTdlComponent];

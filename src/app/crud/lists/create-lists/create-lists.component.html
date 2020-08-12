@@ -3,14 +3,16 @@
   (ngSubmit)="createNewList()"
   [formGroup]="newListForm"
 >
-  <mat-form-field (color)="(!newListForm.invalid ? 'accent' : 'warn')">
-    <mat-label> create new list 2 </mat-label>
+  <mat-form-field
+    hideRequiredMarker
+    (color)="(!newListForm.invalid ? 'accent' : 'warn')"
+  >
+    <mat-label> create new list </mat-label>
     <input
       #value
+      required
       matInput
-      [(ngModel)]="title"
       minlength="1"
-      value=""
       formControlName="title"
       placeholder="title"
     />
@@ -18,7 +20,7 @@
 
   <button
     mat-icon-button
-    [disabled]="[newListForm.invalid || title.length <= 0]"
+    [disabled]="newListForm.invalid"
     color="primary"
     type="submit"
   >
@@ -27,5 +29,4 @@
   <mat-error *ngIf="title.length > 50">
     title should be less than 50 charcaters
   </mat-error>
-  <mat-error *ngIf=""> </mat-error>
 </form>

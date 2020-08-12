@@ -1,8 +1,14 @@
 :host {
   height: 100vh;
+  width: fit-content;
+  min-width: 25vw;
+  max-width: min-content;
+  background-color: rgb(213, 213, 213);
+}
+
+.list-div {
   padding: 0px;
   margin: 0px;
-  background-color: rgb(213, 213, 213);
 }
 
 .create_tdl {
@@ -31,4 +37,13 @@
   flex: 1;
   padding: 0px;
   margin: 0px;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  background-color: transparent;
+  text-decoration: none;
+  color: black;
 }

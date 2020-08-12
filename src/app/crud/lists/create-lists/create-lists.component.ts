@@ -19,7 +19,7 @@ export class CreateListsComponent implements OnInit {
   title = "";
   ngOnInit(): void {
     this.newListForm = this.fb.group({
-      title: ["", [Validators.maxLength(50)]],
+      title: ["", [Validators.maxLength(50), Validators.minLength(1)]],
     });
   }
 

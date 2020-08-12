@@ -1,5 +1,5 @@
 import { createAction, props } from "@ngrx/store";
-import { Tasks } from "../crud/models/crud-interfaces";
+import { Tasks, TasksList } from "../crud/models/crud-interfaces";
 
 // create new lists
 export const createTaskList = createAction(
@@ -14,7 +14,16 @@ export const deleteTaskList = createAction(
 
 export const updateTaskList = createAction(
   "[crud] update a list title",
-  props<{ oldListTitle: string; newListTitle: string }>()
+  props<{
+    oldListTitle: string;
+    newListTitle: string;
+    tasksToAdd: Tasks[];
+  }>()
+);
+
+export const detailTaskList = createAction(
+  "[crud] detail the tdl and all it's tasks",
+  props<{ tasklist: TasksList }>()
 );
 
 // create tasks
