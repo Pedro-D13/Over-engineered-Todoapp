@@ -10,3 +10,7 @@ export interface TasksList {
   listTitle: string;
   tasks: Tasks[];
 }
+
+export interface PriorityLabel {
+  colour: "red" | "yellow" | "green";
+}

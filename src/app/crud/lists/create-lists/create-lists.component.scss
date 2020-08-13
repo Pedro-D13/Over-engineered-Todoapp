@@ -1,4 +1,11 @@
 .create_task_form {
   margin: 20px;
   justify-self: center;
+  min-width: 25vw;
+  max-width: min-content;
+  width: 100%;
+}
+
+.input-full-width {
+  width: 90%;
 }

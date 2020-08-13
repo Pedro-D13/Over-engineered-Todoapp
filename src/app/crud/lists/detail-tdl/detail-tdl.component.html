@@ -4,7 +4,7 @@
       <h1 mat-subheader>{{ detail.listTitle }}</h1>
       <mat-selection-list *ngFor="let each of detail.tasks; let i = index">
         <mat-list-option>
-          <p>{{ i }}: {{ each.title }}</p>
+          <p>{{ i + 1 }}: {{ each.title }}</p>
           <p>{{ each.content }}</p>
         </mat-list-option>
       </mat-selection-list>

@@ -3,8 +3,10 @@
   display: grid;
   background-color: white;
   align-items: stretch;
+  margin: 0px;
+  padding: 0px;
 }
 
 .container {
-  width: 40vw;
+  width: auto;
 }

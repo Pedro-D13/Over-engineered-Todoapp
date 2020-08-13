@@ -21,6 +21,8 @@ import { CreatetaskComponent } from "./tasks/createtask/createtask.component";
 import { DeletetaskComponent } from "./tasks/deletetask/deletetask.component";
 import { DetailtaskComponent } from "./tasks/detailtask/detailtask.component";
 import { UpdatetaskComponent } from "./tasks/updatetask/updatetask.component";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatRippleModule, MatNativeDateModule } from "@angular/material/core";
 
 const components = [
   CreateListsComponent,
@@ -35,6 +37,7 @@ const components = [
 ];
 
 const modules = [
+  MatRippleModule,
   CommonModule,
   FormsModule,
   MatListModule,
@@ -49,6 +52,8 @@ const modules = [
   MatIconModule,
   MatCheckboxModule,
   RouterModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
 ];
 
 @NgModule({

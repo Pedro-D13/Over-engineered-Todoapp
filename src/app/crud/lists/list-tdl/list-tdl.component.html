@@ -1,5 +1,5 @@
 <mat-list class="list-div"
-  ><div mat-subheader>TodoLists</div>
+  ><div mat-subheader style="justify-content: center;">TodoLists</div>
   <div class="create_tdl">
     <app-create-lists></app-create-lists>
   </div>
@@ -47,18 +47,19 @@
             </form>
           </div>
 
-          <button mat-button class="child">
-            <a
-              #taskListButton
-              routerLink="/tdl-tasks"
-              routerLinkActive="router-link-active"
-              color="primary"
-              [hidden]="false"
-              (click)="detailCurrentDoList(list)"
-            >
-              {{ list.listTitle }}
-            </a>
-          </button>
+          <a
+            matRipple
+            #taskListButton
+            routerLink="/tdl-tasks"
+            routerLinkActive="router-link-active"
+            color="primary"
+            [hidden]="false"
+            class="child"
+            (click)="detailCurrentDoList(list)"
+          >
+            {{ list.listTitle }}
+          </a>
+
           <mat-icon
             class="m-icon"
             (click)="
