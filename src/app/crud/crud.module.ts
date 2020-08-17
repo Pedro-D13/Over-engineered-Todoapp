@@ -12,29 +12,11 @@ import { MatInputModule } from "@angular/material/input";
 import { MatListModule } from "@angular/material/list";
 import { MatSelectModule } from "@angular/material/select";
 import { RouterModule } from "@angular/router";
-import { ListTdlComponent } from "src/app/crud/lists/list-tdl/list-tdl.component";
-import { CreateListsComponent } from "./lists/create-lists/create-lists.component";
-import { DeleteTdlComponent } from "./lists/delete-tdl/delete-tdl.component";
-import { DetailTdlComponent } from "./lists/detail-tdl/detail-tdl.component";
-import { UpdateTdlComponent } from "./lists/update-tdl/update-tdl.component";
-import { CreatetaskComponent } from "./tasks/createtask/createtask.component";
-import { DeletetaskComponent } from "./tasks/deletetask/deletetask.component";
-import { DetailtaskComponent } from "./tasks/detailtask/detailtask.component";
-import { UpdatetaskComponent } from "./tasks/updatetask/updatetask.component";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatRippleModule, MatNativeDateModule } from "@angular/material/core";
+import { TasksComponent } from "./tasks/tasks.component";
 
-const components = [
-  CreateListsComponent,
-  CreatetaskComponent,
-  DeletetaskComponent,
-  UpdatetaskComponent,
-  DetailtaskComponent,
-  ListTdlComponent,
-  DeleteTdlComponent,
-  DetailTdlComponent,
-  UpdateTdlComponent,
-];
+const components = [TasksComponent];
 
 const modules = [
   MatRippleModule,

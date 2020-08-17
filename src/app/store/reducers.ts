@@ -1,66 +1,64 @@
-import { Action, createReducer, on } from "@ngrx/store";
-import { Tasks, TasksList } from "../crud/models/crud-interfaces";
-import * as crudActions from "./actions";
-import { state } from "@angular/animations";
+import { Action, createReducer, on, State } from "@ngrx/store";
+import { EntityState, createEntityAdapter, EntityAdapter } from "@ngrx/entity";
+import { InitialState } from "@ngrx/store/src/models";
+import * as todoActions from "../store/actions";
 
-export interface TodoAppState {
-  lists: TasksList[];
-  detail: TasksList;
+//
+export interface Todo {
+  id: "";
+  title: "";
 }
 
-// dummy data to work with
-const manyTasks: Tasks[] = [
-  { title: "get things done", date_created: null },
-  { title: "make sure you eat healthy", date_created: null, priority: "red" },
-  { title: "welcome the guets to the party", date_created: new Date() },
-  { title: "get things done", date_created: null, priority: "yellow" },
-];
+export interface ToDoState extends EntityState<Todo> {
+  content: string;
+  selectedTodoId: null;
+}
+export function selectTodoId(item: Todo): string {
+  return item.id;
+}
+export const adapter: EntityAdapter<Todo> = createEntityAdapter<Todo>({
+  selectId: selectTodoId,
+  sortComparer: sortBytitle,
+});
 
-export const initialState: TodoAppState = {
-  lists: [
-    { listTitle: "default", tasks: manyTasks },
-    {
-      listTitle: "new task 2 ",
-      tasks: [{ title: "get money", content: "get rich?" }],
-    },
-    {
-      listTitle: "shopping list",
-      tasks: [{ title: "water", content: "buy water" }],
-    },
-  ],
-  detail: { listTitle: "", tasks: [] },
-};
+export function sortBytitle(item1: Todo, item2: Todo): number {
+  return item1.title.localeCompare(item2.title);
+}
 
-const toDoAppReducer = createReducer(
+export const initialState: ToDoState = adapter.getInitialState({
+  content: "this is working a bit of contnent ",
+  selectedTodoId: null,
+});
+
+const todoReducer = createReducer(
   initialState,
-  on(crudActions.createTaskList, (state, { listTitle }) => ({
-    ...state,
-    lists: [...state.lists, { listTitle: listTitle, tasks: [] }],
-  })),
-  on(crudActions.deleteTaskList, (state, { listTitle }) => ({
-    ...state,
-    lists: [...state.lists.filter((each) => each.listTitle != listTitle)],
-  })),
-  on(crudActions.detailTaskList, (state, { tasklist }) => ({
-    ...state,
-    detail: tasklist,
-  })),
-  on(
-    crudActions.updateTaskList,
-    (state, { oldListTitle, newListTitle, tasksToAdd }) => {
-      return {
-        lists: state.lists.map((each) => {
-          if (each.listTitle === oldListTitle) {
-            return { listTitle: newListTitle, tasks: tasksToAdd };
-          } else {
-            return each;
-          }
-        }),
-      };
-    }
-  )
+  on(todoActions.addTodo, (state, action) => {
+    return adapter.addOne(action.todo, state);
+  }),
+  on(todoActions.deleteTodo, (state, action) => {
+    return adapter.removeOne(action.id, state);
+  }),
+  on(todoActions.updateTodo, (state, action) => {
+    return adapter.updateOne(action.update, state);
+  })
 );
 
-export function reducer(state: TodoAppState | undefined, action: Action) {
-  return toDoAppReducer(state, action);
+export function reducer(state: ToDoState | undefined, action: Action) {
+  return todoReducer(state, action);
 }
+
+export const getSelectedTodoId = (state: ToDoState) => state.selectedTodoId;
+
+const todoSelectors = adapter.getSelectors();
+
+// select the array of user ids
+export const selectedTodoId = todoSelectors.selectIds;
+
+// select the dictionary of user entities
+export const selectTodoEntities = todoSelectors.selectEntities;
+
+// select the array of users
+export const selectAllTodo = todoSelectors.selectAll;
+
+// select the total user count
+export const selectTodoTotal = todoSelectors.selectTotal;

@@ -1,33 +1,19 @@
 import { createAction, props } from "@ngrx/store";
-import { Tasks, TasksList } from "../crud/models/crud-interfaces";
 
-// create new lists
-export const createTaskList = createAction(
-  "[crud] create a new list for tasks",
-  props<{ listTitle: string }>()
+import { Update } from "@ngrx/entity";
+import { Todo } from "src/app/store/reducers";
+
+export const addTodo = createAction(
+  "[todo] create a new todo item ",
+  props<{ todo: Todo }>()
 );
 
-export const deleteTaskList = createAction(
-  "[crud] delete a list for tasks",
-  props<{ listTitle: string }>()
+export const deleteTodo = createAction(
+  "[todo] delete a todo item",
+  props<{ id: string }>()
 );
 
-export const updateTaskList = createAction(
-  "[crud] update a list title",
-  props<{
-    oldListTitle: string;
-    newListTitle: string;
-    tasksToAdd: Tasks[];
-  }>()
-);
-
-export const detailTaskList = createAction(
-  "[crud] detail the tdl and all it's tasks",
-  props<{ tasklist: TasksList }>()
-);
-
-// create tasks
-export const addTask = createAction(
-  "[crud] create a new task ",
-  props<Tasks>()
+export const updateTodo = createAction(
+  "[todo] update a todo item",
+  props<{ update: Update<Todo> }>()
 );
