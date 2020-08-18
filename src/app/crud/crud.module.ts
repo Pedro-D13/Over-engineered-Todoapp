@@ -16,9 +16,12 @@ import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatRippleModule, MatNativeDateModule } from "@angular/material/core";
 import { TasksComponent } from "./tasks/tasks.component";
 
-const components = [TasksComponent];
+import { MatCardModule } from "@angular/material/card";
+import { AddTaskComponent } from "./add-task/add-task.component";
+const components = [TasksComponent, AddTaskComponent];
 
 const modules = [
+  MatCardModule,
   MatRippleModule,
   CommonModule,
   FormsModule,

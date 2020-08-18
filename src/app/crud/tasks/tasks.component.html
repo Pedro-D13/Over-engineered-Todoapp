@@ -1,0 +1,8 @@
+<!-- list all the tasks that a person has -->
+
+<mat-list *ngFor="let tasks of todoLists$ | async">
+  <mat-card>
+    <mat-card-title> {{ tasks.title }} </mat-card-title>
+    <mat-card-content>{{ tasks.content }} </mat-card-content>
+  </mat-card>
+</mat-list>

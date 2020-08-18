@@ -1,9 +1,16 @@
 import { Component, OnInit } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { Observable } from "rxjs";
-import { Tasks } from "src/app/crud/models/crud-interfaces";
 
 import * as fromTasks from "../../store/reducers";
+import * as tasksAction from "../../store/actions";
+import {
+  selectTodoEntities,
+  selectAllTodo,
+  selectCurrentTodo,
+} from "src/app/store";
+import { Dictionary } from "@ngrx/entity";
+import { Todo } from "../../store/reducers";
 
 @Component({
   selector: "app-tasks",
@@ -11,7 +18,12 @@ import * as fromTasks from "../../store/reducers";
   styleUrls: ["./tasks.component.scss"],
 })
 export class TasksComponent implements OnInit {
-  constructor(private store: Store<{ tdl: fromTasks.ToDoState }>);
+  todoLists$: Observable<Todo[]>;
+  currentTask$: Observable<Todo>;
 
-  ngOnInit() {}
+  constructor(private store: Store<{ tdl: fromTasks.ToDoState }>) {}
+  ngOnInit() {
+    this.todoLists$ = this.store.pipe(select(selectAllTodo));
+    this.currentTask$ = this.store.pipe(select(selectCurrentTodo));
+  }
 }

@@ -1,0 +1,11 @@
+<form [formGroup]="addTodoForm" (ngSubmit)="addTask()">
+  <mat-form-field>
+    <input matInput placeholder="title" formControlName="title" />
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="content" formControlName="content" />
+  </mat-form-field>
+  <button mat-raised-button>
+    Add new task
+  </button>
+</form>
