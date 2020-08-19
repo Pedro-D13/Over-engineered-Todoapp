@@ -14,6 +14,8 @@ import { MatSelectModule } from "@angular/material/select";
 import { RouterModule } from "@angular/router";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatRippleModule, MatNativeDateModule } from "@angular/material/core";
+
+import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { TasksComponent } from "./tasks/tasks.component";
 
 import { MatCardModule } from "@angular/material/card";
@@ -21,6 +23,7 @@ import { AddTaskComponent } from "./add-task/add-task.component";
 const components = [TasksComponent, AddTaskComponent];
 
 const modules = [
+  MatBottomSheetModule,
   MatCardModule,
   MatRippleModule,
   CommonModule,

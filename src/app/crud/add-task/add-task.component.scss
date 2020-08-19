@@ -9,8 +9,8 @@
 }
 mat-form-field {
   min-width: 150px;
-  max-width: 500px;
-  width: 80%;
+  max-width: 100vw;
+  width: 100%;
 }
 
 .transparent-card-bg {
@@ -20,4 +20,23 @@ mat-form-field {
 
 .solid-card-bg {
   background-color: white;
+}
+
+.div-close-button {
+  display: flex;
+  justify-content: flex-end;
+}
+.close-button {
+  margin: 0px 1rem;
+}
+
+@media (min-width: 800px) {
+  :host {
+    display: grid;
+    grid-template-columns: 1;
+    grid-template-rows: 1;
+  }
+
+  .add-todo {
+  }
 }

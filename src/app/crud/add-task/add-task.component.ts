@@ -4,6 +4,7 @@ import { Store } from "@ngrx/store";
 import * as reducers from "../../store/reducers";
 import * as actions from "../../store/actions";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { MatBottomSheetRef } from "@angular/material/bottom-sheet";
 
 @Component({
   selector: "app-add-task",

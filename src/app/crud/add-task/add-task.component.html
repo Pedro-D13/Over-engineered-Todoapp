@@ -8,6 +8,18 @@
     #showForm
     hidden="true"
   >
+    <div class="div-close-button">
+      <button
+        class="close-button"
+        type="button"
+        mat-icon-button
+        (click)="showForm.hidden = true"
+      >
+        <mat-icon class="close-icon">
+          close
+        </mat-icon>
+      </button>
+    </div>
     <mat-form-field appearance="outline">
       <mat-label> Title</mat-label>
       <input
@@ -38,7 +50,8 @@
     </button>
   </form>
   <button
-    [ngStyle]="{ opacity: '1', zindex: '1' }"
+    style="margin-top: 2rem;"
+    [ngStyle]="{ opacity: '1' }"
     mat-fab
     (click)="
       showForm.hidden === true

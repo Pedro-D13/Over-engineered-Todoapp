@@ -1,10 +1,12 @@
 <!-- list all the tasks that a person has -->
 
-<h1 class="app-title">Over Engineered Todo list</h1>
+<mat-card>
+  <mat-card-title class="app-title">Over Engineered Todo list</mat-card-title>
+</mat-card>
 
-<mat-list *ngFor="let tasks of todoLists$ | async">
+<mat-list>
   <mat-accordion multi>
-    <mat-expansion-panel>
+    <mat-expansion-panel *ngFor="let tasks of todoLists$ | async">
       <mat-expansion-panel-header>
         <h4>{{ tasks.title }}</h4>
       </mat-expansion-panel-header>

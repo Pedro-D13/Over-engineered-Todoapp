@@ -12,6 +12,8 @@ import {
 import { Dictionary } from "@ngrx/entity";
 import { Todo } from "../../store/reducers";
 import { FormBuilder, Validators } from "@angular/forms";
+import { MatBottomSheet } from "@angular/material/bottom-sheet";
+import { AddTaskComponent } from "src/app/crud/add-task/add-task.component";
 
 @Component({
   selector: "app-tasks",
@@ -28,7 +30,8 @@ export class TasksComponent implements OnInit {
   });
   constructor(
     private store: Store<{ tdl: fromTasks.ToDoState }>,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private bottomSheet: MatBottomSheet
   ) {}
   ngOnInit() {
     this.todoLists$ = this.store.pipe(select(selectAllTodo));
