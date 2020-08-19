@@ -30,18 +30,19 @@ export const initialState: ToDoState = adapter.getInitialState({
   entities: {
     0: {
       id: "0",
-      title: "this is the best app ever",
-      content: "no contest",
+      title: "Do you like Angular?",
+      content: "Built using Angular's awesome set of tools",
     },
     1: {
       id: "1",
-      title: "another one",
-      content: "no contest",
+      title: "Do you like State Management?",
+      content: "NgRx to the rescue",
     },
     3: {
       id: "3",
-      title: "haha this is sick",
-      content: "no contest",
+      title: "What about SPA's",
+      content:
+        "jacuzzi and sauna's are nice, but so are Single Page Applications",
     },
   },
   selectedTodoId: 1,

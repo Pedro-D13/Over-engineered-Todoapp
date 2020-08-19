@@ -1,0 +1,25 @@
+// on small screens
+.app-title {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.card-content {
+  display: flex;
+}
+
+.push {
+  margin-left: auto;
+  display: flex;
+}
+
+.mat-icon-button {
+  width: fit-content;
+  height: fit-content;
+  margin: 0px 0.1rem;
+}
+
+mat-panel-description {
+  color: black;
+}

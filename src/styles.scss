@@ -19,10 +19,16 @@ $todoapp-warn: mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $todoapp-theme: mat-light-theme(
-  $todoapp-primary,
-  $todoapp-accent,
-  $todoapp-warn
+  (
+    color: (
+      primary: $todoapp-primary,
+      accent: $todoapp-accent,
+      warn: $todoapp-warn,
+    ),
+  )
 );
+
+$todoapp-disabled: mat-palette($mat-red);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -39,5 +45,5 @@ body {
 
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-color: rgb(65, 64, 64);
+  background-color: rgb(169, 222, 131);
 }

@@ -1,8 +1,67 @@
 <!-- list all the tasks that a person has -->
 
+<h1 class="app-title">Over Engineered Todo list</h1>
+
 <mat-list *ngFor="let tasks of todoLists$ | async">
-  <mat-card>
-    <mat-card-title> {{ tasks.title }} </mat-card-title>
-    <mat-card-content>{{ tasks.content }} </mat-card-content>
-  </mat-card>
+  <mat-accordion multi>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <h4>{{ tasks.title }}</h4>
+      </mat-expansion-panel-header>
+      <mat-panel-description>
+        <p [hidden]="deleteButton.disabled == true ? true : false">
+          {{ tasks.content }}
+        </p>
+        <div [hidden]="deleteButton.disabled == false ? true : false">
+          <form [formGroup]="editTodoForm" (ngSubmit)="editTodo(tasks.id)">
+            <mat-form-field>
+              <mat-label> Edit Title</mat-label>
+              <input
+                matInput
+                formControlName="title"
+                placeholder="{{ tasks.title }}"
+              />
+            </mat-form-field>
+            <mat-form-field>
+              <mat-label> Edit Content</mat-label>
+              <input
+                matInput
+                formControlName="content"
+                placeholder="{{ tasks.content }}"
+              />
+            </mat-form-field>
+            <button
+              mat-flat-button
+              color="accent"
+              type="submit"
+              [disabled]="editTodoForm.invalid"
+            >
+              Finalise
+            </button>
+          </form>
+        </div>
+        <div class="push">
+          <button
+            class="button"
+            mat-icon-button
+            (click)="deleteButton.disabled = !deleteButton.disabled"
+            [ngStyle]="{
+              color: deleteButton.disabled == true ? 'green' : 'grey'
+            }"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button #deleteButton mat-icon-button (click)="deleteTodo(tasks.id)">
+            <mat-icon
+              [ngStyle]="{
+                color: deleteButton.disabled == true ? 'grey' : 'red'
+              }"
+            >
+              delete
+            </mat-icon>
+          </button>
+        </div>
+      </mat-panel-description>
+    </mat-expansion-panel>
+  </mat-accordion>
 </mat-list>

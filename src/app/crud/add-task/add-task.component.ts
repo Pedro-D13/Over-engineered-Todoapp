@@ -3,7 +3,7 @@ import { ToDoState } from "src/app/store/reducers";
 import { Store } from "@ngrx/store";
 import * as reducers from "../../store/reducers";
 import * as actions from "../../store/actions";
-import { FormGroup, FormBuilder } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-add-task",
@@ -11,9 +11,9 @@ import { FormGroup, FormBuilder } from "@angular/forms";
   styleUrls: ["./add-task.component.scss"],
 })
 export class AddTaskComponent {
-  addTodoForm = this.fb.group(<reducers.Todo>{
+  addTodoForm = this.fb.group({
     id: null,
-    title: null,
+    title: ["", [Validators.required, Validators.minLength(3)]],
     content: null,
   });
 

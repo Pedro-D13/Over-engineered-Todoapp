@@ -1,11 +1,53 @@
-<form [formGroup]="addTodoForm" (ngSubmit)="addTask()">
-  <mat-form-field>
-    <input matInput placeholder="title" formControlName="title" />
-  </mat-form-field>
-  <mat-form-field>
-    <input matInput placeholder="content" formControlName="content" />
-  </mat-form-field>
-  <button mat-raised-button>
-    Add new task
+<mat-card
+  class="add-todo"
+  [class.transparent-card-bg]="showForm.hidden === true"
+>
+  <form
+    [formGroup]="addTodoForm"
+    (ngSubmit)="addTask()"
+    #showForm
+    hidden="true"
+  >
+    <mat-form-field appearance="outline">
+      <mat-label> Title</mat-label>
+      <input
+        matInput
+        placeholder="todo or not to do?"
+        formControlName="title"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Content </mat-label>
+      <textarea
+        matInput
+        placeholder="... that is the question?"
+        formControlName="content"
+      >
+      </textarea>
+    </mat-form-field>
+    <button
+      [disabled]="addTodoForm.invalid"
+      class="add-task-button"
+      color="primary"
+      mat-icon-button
+      aria-label="Add new task"
+      type="submit"
+    >
+      <mat-icon>add_task</mat-icon>
+    </button>
+  </form>
+  <button
+    [ngStyle]="{ opacity: '1', zindex: '1' }"
+    mat-fab
+    (click)="
+      showForm.hidden === true
+        ? (showForm.hidden = false)
+        : (showForm.hidden = true)
+    "
+  >
+    <mat-icon>
+      add
+    </mat-icon>
   </button>
-</form>
+</mat-card>

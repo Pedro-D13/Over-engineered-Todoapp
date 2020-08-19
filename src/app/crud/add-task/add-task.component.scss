@@ -1,0 +1,23 @@
+:host {
+  max-height: 100vh;
+}
+
+.add-todo {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+}
+mat-form-field {
+  min-width: 150px;
+  max-width: 500px;
+  width: 80%;
+}
+
+.transparent-card-bg {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.solid-card-bg {
+  background-color: white;
+}
