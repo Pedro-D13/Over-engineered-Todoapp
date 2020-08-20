@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "todoapp-bee2c": {
+      "hosting": {
+        "todoapp": [
+          "todoapp-bee2c"
+        ]
+      }
+    }
+  }
+}
