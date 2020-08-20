@@ -66,5 +66,14 @@
       </mat-panel-description>
     </mat-expansion-panel>
   </mat-accordion>
+
+  <h1
+    *ngIf="todoLists$ | async"
+    hidden="false"
+    style="margin-top: 100%; margin-bottom: 100%;"
+    matLine
+  >
+    add a task below 👇👇👇
+  </h1>
   <ng-content></ng-content>
 </mat-list>

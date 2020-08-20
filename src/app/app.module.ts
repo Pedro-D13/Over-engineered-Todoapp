@@ -9,6 +9,8 @@ import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { CrudModule } from "./crud/crud.module";
 import * as fromTodoList from "./store/reducers";
+import { EffectsModule } from "@ngrx/effects";
+import { TodoEffects } from "src/app/store/effects";
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +25,7 @@ import * as fromTodoList from "./store/reducers";
       maxAge: 25,
       logOnly: environment.production,
     }),
+    EffectsModule.forRoot([TodoEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

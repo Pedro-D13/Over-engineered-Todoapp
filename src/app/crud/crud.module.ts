@@ -20,7 +20,8 @@ import { TasksComponent } from "./tasks/tasks.component";
 
 import { MatCardModule } from "@angular/material/card";
 import { AddTaskComponent } from "./add-task/add-task.component";
-const components = [TasksComponent, AddTaskComponent];
+import { StateButtonsComponent } from "./state-buttons/state-buttons.component";
+const components = [TasksComponent, AddTaskComponent, StateButtonsComponent];
 
 const modules = [
   MatBottomSheetModule,

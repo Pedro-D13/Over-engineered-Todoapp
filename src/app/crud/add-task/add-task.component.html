@@ -29,8 +29,12 @@
         placeholder="todo or not to do?"
         formControlName="title"
       />
+      <ng-container *ngIf="addTodoForm.invalid && !addTodoForm.pristine">
+        <mat-hint>
+          needs to between 3 - 50 characters
+        </mat-hint>
+      </ng-container>
     </mat-form-field>
-
     <mat-form-field appearance="outline">
       <mat-label> Content </mat-label>
       <input
@@ -41,15 +45,20 @@
     </mat-form-field>
     <button
       [disabled]="addTodoForm.invalid"
-      class="add-task-button"
       color="primary"
       mat-icon-button
       aria-label="Add new task"
       type="submit"
     >
-      <mat-icon>add_task</mat-icon>
+      <mat-icon class="add-task-icon">add_task</mat-icon>
     </button>
   </form>
+  <app-state-buttons
+    [hidden]="
+      (isWideScreen$ | async) && showForm.hidden === true ? true : false
+    "
+    [isWideScreen]="isWideScreen$"
+  ></app-state-buttons>
   <button
     *ngIf="isWideScreen$ | async"
     style="margin-top: 2rem;"

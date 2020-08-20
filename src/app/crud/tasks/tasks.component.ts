@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, OnDestroy, OnChanges } from "@angular/core";
 import { Store, select } from "@ngrx/store";
 import { Observable } from "rxjs";
 
@@ -32,7 +32,11 @@ export class TasksComponent implements OnInit {
     private store: Store<{ tdl: fromTasks.ToDoState }>,
     private fb: FormBuilder
   ) {}
+
   ngOnInit() {
+    if (localStorage.getItem("state")) {
+      this.store.dispatch(todoAction.loadTodoList());
+    }
     this.todoLists$ = this.store.pipe(select(selectAllTodo));
     this.currentTask$ = this.store.pipe(select(selectCurrentTodo));
   }

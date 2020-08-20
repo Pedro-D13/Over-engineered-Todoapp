@@ -9,6 +9,9 @@
   bottom: 0px;
 }
 
+.add-task-icon {
+  margin-bottom: 2rem;
+}
 mat-card {
   max-width: 600px;
 }
@@ -34,11 +37,17 @@ mat-form-field {
 .close-button {
   margin: 0px 1rem;
 }
-
-@media (min-width: 800px) {
+@media (min-width: 960px) {
   :host {
     display: grid;
     grid-template-columns: 1;
     grid-template-rows: 1;
+  }
+  .add-todo {
+    bottom: 0px;
+    left: auto;
+    right: auto;
+    position: fixed;
+    place-self: center;
   }
 }

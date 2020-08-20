@@ -27,7 +27,10 @@ export class AddTaskComponent implements OnInit {
 
   addTodoForm = this.fb.group({
     id: null,
-    title: ["", [Validators.required, Validators.minLength(3)]],
+    title: [
+      "",
+      [Validators.required, Validators.maxLength(50), Validators.minLength(3)],
+    ],
     content: null,
   });
 

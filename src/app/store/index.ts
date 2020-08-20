@@ -17,9 +17,9 @@ export const selectTodoState = createFeatureSelector<fromTodoReducer.ToDoState>(
   "tdl"
 );
 
-export const selectedTodoId = createSelector(
+export const selectedTodoIds = createSelector(
   selectTodoState,
-  fromTodoReducer.todoSelectors.selectIds // shorthand for usersState => fromUser.selectUserIds(usersState)
+  fromTodoReducer.todoSelectors.selectIds
 );
 export const selectTodoEntities = createSelector(
   selectTodoState,
