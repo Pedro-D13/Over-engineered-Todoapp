@@ -6,7 +6,7 @@
     [formGroup]="addTodoForm"
     (ngSubmit)="addTask()"
     #showForm
-    hidden="true"
+    [hidden]="(isWideScreen$ | async) ? true : false"
   >
     <div class="div-close-button">
       <button
@@ -15,7 +15,7 @@
         mat-icon-button
         (click)="showForm.hidden = true"
       >
-        <mat-icon class="close-icon">
+        <mat-icon class="close-icon" *ngIf="isWideScreen$ | async">
           close
         </mat-icon>
       </button>
@@ -23,6 +23,8 @@
     <mat-form-field appearance="outline">
       <mat-label> Title</mat-label>
       <input
+        #titleInputFocus
+        autofocus
         matInput
         placeholder="todo or not to do?"
         formControlName="title"
@@ -31,12 +33,11 @@
 
     <mat-form-field appearance="outline">
       <mat-label> Content </mat-label>
-      <textarea
+      <input
         matInput
         placeholder="... that is the question?"
         formControlName="content"
-      >
-      </textarea>
+      />
     </mat-form-field>
     <button
       [disabled]="addTodoForm.invalid"
@@ -50,6 +51,7 @@
     </button>
   </form>
   <button
+    *ngIf="isWideScreen$ | async"
     style="margin-top: 2rem;"
     [ngStyle]="{ opacity: '1' }"
     mat-fab

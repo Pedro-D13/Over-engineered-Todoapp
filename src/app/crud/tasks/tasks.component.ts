@@ -30,8 +30,7 @@ export class TasksComponent implements OnInit {
   });
   constructor(
     private store: Store<{ tdl: fromTasks.ToDoState }>,
-    private fb: FormBuilder,
-    private bottomSheet: MatBottomSheet
+    private fb: FormBuilder
   ) {}
   ngOnInit() {
     this.todoLists$ = this.store.pipe(select(selectAllTodo));
