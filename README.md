@@ -13,6 +13,7 @@ Core Features:
   Works with form inputs and form validation
   Reactive with push architecture
   Uses Redux pattern for statemangement
+  Works Offline 
     
 How to use:
   1. clear the state
