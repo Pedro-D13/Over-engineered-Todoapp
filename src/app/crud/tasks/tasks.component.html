@@ -1,6 +1,6 @@
 <!-- list all the tasks that a person has -->
 
-<mat-card>
+<mat-card class="heading-title">
   <mat-card-title class="app-title">Over Engineered Todo list</mat-card-title>
 </mat-card>
 
@@ -67,13 +67,21 @@
     </mat-expansion-panel>
   </mat-accordion>
 
-  <h1
-    *ngIf="todoLists$ | async"
+  <ng-container
+    *ngIf="!(selectTodoTotal$ | async) as total"
     hidden="false"
     style="margin-top: 100%; margin-bottom: 100%;"
     matLine
   >
-    add a task below 👇👇👇
-  </h1>
+    <mat-card style="margin-top: 50%; margin-bottom: 50%; width: 400px;">
+      <mat-card-title (click)="focusInput()">
+        No tasks found
+      </mat-card-title>
+      <mat-card-content>
+        add tasks below👇
+      </mat-card-content>
+    </mat-card>
+  </ng-container>
+
   <ng-content></ng-content>
 </mat-list>

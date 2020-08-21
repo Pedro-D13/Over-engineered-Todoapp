@@ -8,6 +8,7 @@ import {
   selectTodoEntities,
   selectAllTodo,
   selectCurrentTodo,
+  selectTodoTotal,
 } from "src/app/store";
 import { Dictionary } from "@ngrx/entity";
 import { Todo } from "../../store/reducers";
@@ -22,8 +23,9 @@ import { AddTaskComponent } from "src/app/crud/add-task/add-task.component";
 })
 export class TasksComponent implements OnInit {
   todoLists$: Observable<Todo[]>;
-
   currentTask$: Observable<Todo>;
+  selectTodoTotal$: Observable<number>;
+
   editTodoForm = this.fb.group({
     title: ["", [Validators.required, Validators.minLength(3)]],
     content: null,
@@ -39,6 +41,11 @@ export class TasksComponent implements OnInit {
     }
     this.todoLists$ = this.store.pipe(select(selectAllTodo));
     this.currentTask$ = this.store.pipe(select(selectCurrentTodo));
+    this.selectTodoTotal$ = this.store.pipe(select(selectTodoTotal));
+  }
+
+  focusInput() {
+    // this.titleInput.nativeElement.focus();
   }
 
   deleteTodo(id: string) {
