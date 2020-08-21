@@ -14,6 +14,13 @@ Core Features:
   Reactive with push architecture
   Uses Redux pattern for statemangement
     
+How to use:
+  1. clear the state
+  2. create a few new tasks
+  3. save those tasks.
+  4. refresh the browser tab , close it and reopen it and leave the website and come back to it. 
+  5. State should persist in local storage once it has been saved by the user.
+
 
 
 # Development server
